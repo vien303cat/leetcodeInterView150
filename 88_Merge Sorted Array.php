@@ -48,22 +48,22 @@ nums2.length == n
 
 class Solution {
 
-/**
- * @param Integer[] $nums1
- * @param Integer $m
- * @param Integer[] $nums2
- * @param Integer $n
- * @return NULL
- */
-function merge(&$nums1, $m, $nums2, $n) {
-    $endArr = [];
-    for($i = 0 ; $i < $m ; $i++){
-        $endArr[] = $nums1[$i];
+    /**
+     * @param Integer[] $nums1
+     * @param Integer $m
+     * @param Integer[] $nums2
+     * @param Integer $n
+     * @return NULL
+     */
+    function merge(&$nums1, $m, $nums2, $n) {
+        $endArr = [];
+        for($i = 0 ; $i < $m ; $i++){
+            $endArr[] = $nums1[$i];
+        }
+        for($j = 0 ; $j < $n ; $j++ ){
+            $endArr[] = $nums2[$j];
+        }
+        asort($endArr);
+        $nums1 = $endArr ;
     }
-    for($j = 0 ; $j < $n ; $j++ ){
-        $endArr[] = $nums2[$j];
-    }
-    asort($endArr);
-    $nums1 = $endArr ;
-}
 }
