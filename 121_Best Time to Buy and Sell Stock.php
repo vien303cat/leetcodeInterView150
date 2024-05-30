@@ -1,6 +1,3 @@
-
-
-
 /* *****************************
 121. Best Time to Buy and Sell Stock
 
@@ -50,11 +47,11 @@ class Solution {
      * @return Integer
      */
     function maxProfit($prices) {
-    
+
         $profit = 0;
         $buy    = $prices[0];
         $cnt    = count($prices);
-    
+
         for($i = 1 ; $i < $cnt ; $i++ ){
             if($prices[$i] < $buy){
                 $buy = $prices[$i] ;
@@ -63,6 +60,6 @@ class Solution {
             }
         }
         return $profit; 
-    
+
     }
 }
