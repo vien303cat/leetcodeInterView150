@@ -43,59 +43,49 @@
 <body>
     <script>
 
-
         /**
          * @param {number[]} nums
-         * @return {boolean}
+         * @return {number}
          */
-        var canJump = function(nums) {
-            //總共需要跳幾格
-            const total  = nums.length - 1 ;
-            // 目前跳了幾格(用來跟total比對 超過即結束)
-            let nowTotal = 0 ;
-            // 下次跳躍
-            let nextJump = 0 ;
-            // 暫存跳躍值
-            let JumpVal = 0 ;
-            let cnt = 0 ;
+        var jump = function(nums) {
+                //總共需要跳幾格
+                const total  = nums.length - 1 ;
+                // 下次跳躍
+                let nextJump = 0 ;
+                // 暫存跳躍值
+                let JumpVal = 0 ;
+                let cnt = 0 ;
+                let i = 0 ;
+                // console.log(total);
+                while(i < total){
 
-            for(let i = 0 ; i <= nums.length ; i++){
-                nextJump = 0 ;
-                JumpVal  = 0 ;
+                    cnt++;
+                    // console.log('cnt='+cnt);
+                    nextJump = 0 ;
+                    JumpVal  = 0 ;
 
-                //判斷是否有超過終點的
-                if(i >= total || nums[i] >= total){
-                    console.log(`cnt=${cnt}`);
-                    return cnt;
-                }
-
-                //分算跳到哪下一步可以跳最大格
-                for(let j = 1 ; j <= nums[i] ; j++){
-
-                    // 儲存下次可跳躍最大格數的次序
-                    if(j + nums[i+j] > JumpVal ){
-                        JumpVal  = j + nums[i+j] ;
-                        nextJump = j ; 
+                    //分算跳到哪下一步可以跳最大格
+                    for(let j = 1 ; j <= nums[i] ; j++){
+                        // 儲存下次可跳躍最大格數的次序
+                        if(j + nums[i+j] > JumpVal ){
+                            JumpVal  = j + nums[i+j] ;
+                            nextJump = j ; 
+                        }
                     }
-                }
                 
-                //決定跳格
-                if(nextJump == 0 ){
-                    return false;
-                }else{
-                    
+                    if(nums[i] >= total - i ){
+                        // console.log('break!');
+                        // console.log(`nums[i] > total - i : ${nums[i]} > ${total} - ${i} `);
+                        break;
+                    }
                     // 跳格
                     i += nextJump ;
-                    nowTotal += nextJump;
-                    cnt++
+                    
                 }
-                i--;
-            }
-        };
+                console.log('cnt='+cnt);
+            };
 
-
-        canJump([2,3,0,1,4]);
-        canJump([2,3,1,1,4]);
+            jump([2,3,1]);
 
     </script>
     
